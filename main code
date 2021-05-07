@@ -1,0 +1,58 @@
+#allows for sprint(), colour, and random pick
+from random import randint
+from colorama import Fore, Back, Style
+import sys,time
+
+def sprint(str):
+  for c in str + '\n':
+    sys.stdout.write(c)
+    sys.stdout.flush()
+    time.sleep(3./40)
+
+#creates a list of play options
+t = ["Rock", "Paper", "Scissors"]
+
+
+sprint('Welcome to Rock Paper Scissors!')
+print('')
+
+
+
+#makes the computer pick a random number
+computer = t[randint(0,2)]
+
+#sets player to true
+player = True
+
+# starts while loop
+while player == True:
+
+    player = input("Rock, Paper, Scissors? ")
+    if player == computer:
+        print(Fore.LIGHTMAGENTA_EX + "Tie; you both picked", player)
+        print(Style.RESET_ALL)
+    elif player == "Rock":
+        if computer == "Paper":
+            print(Fore.BLUE + "You lose!", computer, "covers", player)
+            print(Style.RESET_ALL)
+        else:
+            print(Fore.LIGHTYELLOW_EX + "You win!", player, "smashes", computer)
+            print(Style.RESET_ALL)
+    elif player == "Paper":
+        if computer == "Scissors":
+            print(Fore.LIGHTBLUE_EX + "You lose!", computer, "cut", player)
+            print(Style.RESET_ALL)
+        else:
+            print(Fore.GREEN + "You win!", player, "covers", computer)
+    elif player == "Scissors":
+        if computer == "Rock":
+            print(Fore.CYAN + "You lose...", computer, "smashes", player)
+            print(Style.RESET_ALL)
+        else:
+            print(Fore.RED + "You win!", player, "cut", computer)
+            print(Style.RESET_ALL)
+    else:
+        print("That's not a valid play. Check your spelling!")
+    
+    player = True
+    computer = t[randint(0,2)]
